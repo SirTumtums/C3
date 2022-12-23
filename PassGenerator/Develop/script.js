@@ -3,6 +3,8 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+  var lowercaseChars = "abcdefghijklmnopqrstuvwxyz"
+  
   var password = generatePassword("hallo", "hihd");
   var passwordText = document.querySelector("#password");
 
