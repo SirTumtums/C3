@@ -148,7 +148,7 @@ function writePassword() {
 
   // lower = true, upper = false, number = true, special = true
   else if (lowercaseConfirm && !uppercaseConfirm && numberConfirm && specialConfirm) {
-    passwordOptions = lowerCasedCharacters.concat(numberConfirm, specialCharacters)
+    passwordOptions = lowerCasedCharacters.concat(numericCharacters, specialCharacters)
     console.log(passwordOptions);
   }
 
@@ -157,6 +157,64 @@ function writePassword() {
   else if (!lowercaseConfirm && uppercaseConfirm && numberConfirm && specialConfirm) {
     passwordOptions = upperCasedCharacters.concat(numericCharacters, specialCharacters)
     console.log(passwordOptions);
+  }
+
+  // 2 False 2 True
+  // Lc & UC
+  else if (lowercaseConfirm && uppercaseConfirm && !numberConfirm && !specialConfirm){
+    passwordOptions = lowerCasedCharacters.concat(upperCasedCharacters)
+  }
+
+  // Lc sc
+  else if (lowercaseConfirm && !uppercaseConfirm && !numberConfirm && specialConfirm){
+    passwordOptions = lowerCasedCharacters.concat(specialCharacters)
+  }
+
+  // lc Nc
+  else if (lowercaseConfirm && !uppercaseConfirm && numberConfirm && !specialConfirm){
+    passwordOptions = lowerCasedCharacters.concat(numericCharacters)
+  }
+
+  // Uc NC
+  else if (!lowercaseConfirm && uppercaseConfirm && numberConfirm && !specialConfirm){
+    passwordOptions = upperCasedCharacters.concat(numericCharacters)
+  }
+
+  // UC Sc
+  else if (!lowercaseConfirm && uppercaseConfirm && !numberConfirm && specialConfirm){
+    passwordOptions = upperCasedCharacters.concat(specialCharacters)
+  }
+
+  // Nc Sc
+  else if (!lowercaseConfirm && !uppercaseConfirm && numberConfirm && specialConfirm){
+    passwordOptions = numericCharacters.concat(specialCharacters)
+  }
+
+  // 3 False 1 True
+  // UC only
+  else if (!lowercaseConfirm && uppercaseConfirm && !numberConfirm && !specialConfirm) {
+    passwordOptions = upperCasedCharacters
+    
+  }
+
+  // Lc only
+  else if (lowercaseConfirm && !uppercaseConfirm && !numberConfirm && !specialConfirm) {
+    passwordOptions = lowerCasedCharacters
+    
+  }
+
+
+  // Nc only
+  else if (!lowercaseConfirm && !uppercaseConfirm && numberConfirm && !specialConfirm) {
+    passwordOptions = numericCharacters
+    
+  }
+
+
+  // Sc only
+  else if (!lowercaseConfirm && !uppercaseConfirm && !numberConfirm && specialConfirm) {
+    passwordOptions = specialCharacters
+    
   }
 
   // explanation of for loop
@@ -169,7 +227,7 @@ function writePassword() {
   var generatedPassword = [];
 
   for (var i = 0; i < passwordLength; i++) {
-    const random = Math.floor(Math.random() * passwordOptions.length);
+    var random = Math.floor(Math.random() * passwordOptions.length);
     console.log(random, passwordOptions[random]);
 
     generatedPassword.push(passwordOptions[random]);
@@ -181,7 +239,7 @@ function writePassword() {
   
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = generatedPassword;
+  passwordText.value = generatedPassword;0
 
 }
 
